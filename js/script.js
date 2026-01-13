@@ -61,3 +61,11 @@ function popImage() {
   void img.offsetWidth;
   img.classList.add("pop");
 }
+
+//form processing
+thoughtsForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  comment = document.createElement("thought");
+  comment.innerText = thoughtText.value;
+  thoughtsSection.appendChild(comment);
+});
