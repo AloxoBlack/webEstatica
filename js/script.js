@@ -63,9 +63,9 @@ function popImage() {
 }
 
 //form processing
-thoughtsForm.addEventListener("submit", (e) => {
+/* thoughtsForm.addEventListener("submit", (e) => {
   e.preventDefault();
   comment = document.createElement("thought");
   comment.innerText = thoughtText.value;
   thoughtsSection.appendChild(comment);
-});
+}); */

@@ -16,9 +16,9 @@
         <h1>Jamiroquai - <em>Automaton</em></h1>
         <p><strong>Automaton</strong> is a 2017 album by British funk/acid jazz band <strong>Jamiroquai</strong>. With
             its futuristic themes and synth-heavy sound, it's a cult favorite among vinyl collectors.</p>
-        
-            <h1><mark>Jamiroquai ROCKS!! FOREVERR!!!</mark></h1>
-            <h1><mark>NEW ALBUM IN 2026 YEEEEY</mark></h1>
+
+        <h1><mark>Jamiroquai ROCKS!! FOREVERR!!!</mark></h1>
+        <h1><mark>NEW ALBUM IN 2026 YEEEEY</mark></h1>
         <p>Unfortunately for fans, <strong>Automaton is expensive</strong>—especially the vinyl version. Prices often
             exceed $100 on resale sites due to limited pressings and high demand.</p>
 
@@ -28,14 +28,23 @@
             <button onclick="popImage()">Pop the Album!</button>
         </div>
 
-        <form action="" id="thoughtsForm">
-            <input type="text" placeholder="Thoughts?" id="thoughtText">
-            <button type="submit">Send</button>
-        </form>
-        <div id="thoughtsSection">
-
-        </div>
-
+        <?php
+        switch ($_SERVER['REQUEST_METHOD']) {
+            case "POST":
+                if (isset($_POST['thought'])) { ?>
+                    <div id="thoughtsSection">
+                        <thought><?= strip_tags($_POST['thought']) ?></thought>
+                    </div>
+                <?php
+                    break;
+                }
+            default:
+                ?>
+                <form method="post" id="thoughtsForm">
+                    <input type="text" placeholder="Thoughts?" id="thoughtText" name="thought">
+                    <button type="submit">Send</button>
+                </form>
+        <?php } ?>
     </div>
 </body>
 
