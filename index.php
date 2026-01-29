@@ -34,7 +34,7 @@
         <div id="thoughtsSection">
             <?php
             //access db and lookup thoughts
-            $db = new PDO('mysql:host=localhost;dbname=comentariosDB;charset=utf8mb4', 'appUser', 'jQuaiFan1!');
+            $db = new PDO('mysql:host=127.0.0.1;dbname=comentariosDB;charset=utf8mb4', 'appUser', 'jQuaiFan1!');
             $result = $db->query("select * from comentarios");
             foreach ($result as $row) { ?>
                 <thought><?= $row['comentario'] ?> - <mark><?= $row['nombre'] ?></mark></thought>
