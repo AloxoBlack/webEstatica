@@ -27,24 +27,19 @@
             <br>
             <button onclick="popImage()">Pop the Album!</button>
         </div>
-
-        <?php
-        switch ($_SERVER['REQUEST_METHOD']) {
-            case "POST":
-                if (isset($_POST['thought'])) { ?>
-                    <div id="thoughtsSection">
-                        <thought><?= strip_tags($_POST['thought']) ?></thought>
-                    </div>
-                <?php
-                    break;
-                }
-            default:
-                ?>
-                <form method="post" id="thoughtsForm">
-                    <input type="text" placeholder="Thoughts?" id="thoughtText" name="thought">
-                    <button type="submit">Send</button>
-                </form>
-        <?php } ?>
+        <form method="post" id="thoughtsForm">
+            <input type="text" placeholder="Thoughts?" id="thoughtText" name="thought">
+            <button type="submit">Send</button>
+        </form>
+        <div id="thoughtsSection">
+            <?php
+            //access db and lookup thoughts
+            $db = new PDO('mysql:host=localhost;dbname=comentariosDB;charset=utf8mb4', 'appUser', 'jQuaiFan1!');
+            $result = $db->query("select * from comentarios");
+            foreach ($result as $row) { ?>
+                <thought><?= $row['comentario'] ?> - <mark><?= $row['nombre'] ?></mark></thought>
+            <?php } ?>
+        </div>
     </div>
 </body>
 
